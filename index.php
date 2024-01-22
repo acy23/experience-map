@@ -1,5 +1,11 @@
 <?php 
   include("database.php");
+  session_start();
+  //echo $_SESSION["user_email"];
+  if (!isset($_SESSION["user_email"])) {
+    header("Location: login.php");
+    exit();
+  }
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +25,7 @@
     <header>
       <div style="padding: 0 20px 20px 20px;">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">Experience Ajans</a>
+              <a class="navbar-brand" href="index.php">Experience Ajans</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
@@ -27,7 +33,7 @@
                   <ul class="navbar-nav">
                       <!-- Keep comments -->
                       <li class="nav-item active">
-                          <a class="nav-link" href="#">Anasayfa</a>
+                          <a class="nav-link" href="index.php">Anasayfa</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="#">Çalışan ekle</a>
@@ -35,7 +41,7 @@
                   </ul>
                   <ul class="navbar-nav">
                       <li class="nav-item">
-                          <a class="nav-link" href="#">Çıkış yap</a>
+                          <a class="nav-link" href="logout.php">Çıkış yap</a>
                       </li>
                   </ul>
               </div>
@@ -347,42 +353,47 @@
       // Custom JavaScript function to show modal with data
       function showModalWithData(element) {
         const plakakodu = element.getAttribute('data-plakakodu');
-        const alankodu = element.getAttribute('data-alankodu');
-        const iladi = element.getAttribute('data-iladi');
 
-        const resim = "resimData";
+    // Make an AJAX request to get employee data
+    fetch(`getEmployeeByCityId.php?plakakodu=${plakakodu}`)
+        .then(response => response.json())
+        .then(data => {
+            // Create table HTML dynamically
+            const tableHTML = `
+              <div style="overflow-x: auto; width: 100%;">
+                <table class="table" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th scope="col">#Id</th>
+                      <th scope="col">Full/Part</th>
+                      <th scope="col">Ad</th>
+                      <th scope="col">Soyad</th>
+                      <th scope="col">Telefon numarası</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${data.map(employee => `
+                      <tr>
+                        <th scope="row">${employee.id}</th>
+                        <td>${employee.work_type}</td>
+                        <td>${employee.first_name}</td>
+                        <td>${employee.last_name}</td>
+                        <td>${employee.phone_number}</td>
+                        <td><button type="button" class="btn btn-outline-info">Detay</button></td> 
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>`;
 
-        // Create table HTML dynamically
-        const tableHTML = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Resim</th>
-                <th scope="col">#Id</th>
-                <th scope="col">Ad</th>
-                <th scope="col">Soyad</th>
-                <th scope="col">Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>${resim}</td>
-                <th scope="row">${plakakodu}</th>
-                <td>${alankodu}</td>
-                <td>${iladi}</td>
-                <td>@${iladi.toLowerCase()}</td>
-                <td><button type="button" class="btn btn-outline-info">Detay</button></td> 
-              </tr>
-              <!-- Add more rows if needed -->
-            </tbody>
-          </table>`;
+            // Log the data (you can replace this with your modal logic)
+            console.log("Table Content:", tableHTML);
 
-        // Log the data (you can replace this with your modal logic)
-        console.log("Table Content:", tableHTML);
-
-        // Update modal content and show the Bootstrap modal
-        $('.modal .modal-body').html(tableHTML); // Use '.modal .modal-body' to target the modal body
-        $('.modal').modal('show');
+            // Update modal content and show the Bootstrap modal
+            $('.modal .modal-body').html(tableHTML); // Use '.modal .modal-body' to target the modal body
+            $('.modal').modal('show');
+        })
+        .catch(error => console.error('Error:', error));
       }
     </script>
   </body>
