@@ -153,7 +153,7 @@ button{
         <div class="shape"></div>
     </div>
     <form action="login_process.php" method="post">
-        <h3>Experience Ajans</h3>
+        <img src="assets/images/logo.png" alt="Logo" class="img-fluid my-5 mx-auto d-block" style="width: 250px;" />
 
         <label for="email">Email</label>
         <input type="text" placeholder="Email" id="email" name="email" required>
@@ -162,10 +162,12 @@ button{
         <input type="password" placeholder="Şifre" id="password" name="password" required>
 
         <button type="submit">Giriş yap</button>
+        <!--
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div>
+        -->
     </form>
 </body>
 </html>
