@@ -7,7 +7,28 @@
     exit();
   }
 
-  if(isset())
+  $employeeData = null;  // Variable to store employee data
+
+  if (isset($_GET['id'])) {
+      // Sanitize and validate the id parameter
+      $id = $mysqli->real_escape_string($_GET['id']);
+  
+      // Perform your database query with the id parameter
+      $query = "SELECT * FROM employees WHERE id = '$id'";
+      $result = $mysqli->query($query);
+  
+      // Check if the query was successful and fetch the data
+      if ($result && $result->num_rows > 0) {
+          $employeeData = $result->fetch_assoc();
+      } else {
+          // Handle query error or no data found
+          echo json_encode(['error' => $mysqli->error]);
+      }
+  } else {
+      // No id parameter provided
+      echo json_encode(['error' => 'No id parameter provided']);
+      header("Location: index.php");
+  }
 
 ?>
 
@@ -68,12 +89,12 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-6 mb-4 mb-lg-0">
                 <div class="card mb-3" style="border-radius: .5rem;">
-                <div class="row g-0">
+                <div class="row g-0" style="width: fit-content;">
                     <div class="col-md-4 gradient-custom text-center text-white"
                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                     <img src="assets/images/user.png"
                         alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                    <h5>Ahmet Can Yıldız</h5>
+                    <h5><?php echo $employeeData['first_name'] ?></h5>
                     <p>Yazılım Mühendisi</p>
                     <i class="far fa-edit mb-5"></i>
                     </div>
@@ -84,53 +105,45 @@
                         <div class="row pt-1">
                             <div class="col-6 mb-3">
                                 <h6>Ad</h6>
-                                <p class="text-muted">Ahmet Can</p>
+                                <p class="text-muted"><?php echo $employeeData['first_name'] ?></p>
                             </div>
                             <div class="col-6 mb-3">
                                 <h6>Soyad</h6>
-                                <p class="text-muted">Yıldız</p>
+                                <p class="text-muted"><?php echo $employeeData['last_name'] ?></p>
                             </div>
                             <div class="col-6 mb-3">
                                 <h6>Telefon Numarası</h6>
-                                <p class="text-muted">543 560 11 56</p>
+                                <p class="text-muted"><?php echo $employeeData['phone_number'] ?></p>
                             </div>
                             <div class="col-6 mb-3">
                                 <h6>Şehir</h6>
-                                <p class="text-muted">İstanbul</p>
+                                <p class="text-muted"><?php echo $employeeData['city'] ?></p>
                             </div>
                             <div class="col-6 mb-3">
                                 <h6>İşe Başlangıç Tarihi</h6>
-                                <p class="text-muted">2024-01-01</p>
+                                <p class="text-muted"><?php echo $employeeData['hire_date'] ?></p>
                             </div>
                             <div class="col-6 mb-3">
                                 <h6>Full/Part</h6>
-                                <p class="text-muted">Full</p>
+                                <p class="text-muted"><?php echo $employeeData['work_type'] ?></p>
                             </div>
                             <div class="col-6 mb-3">
                                 <h6>Toplam Çalışma Günü</h6>
-                                <p class="text-muted">700</p>
+                                <p class="text-muted"><?php echo $employeeData['total_worked_day'] ?></p>
                             </div>
                             <div class="col-6 mb-3">
                                 <h6>12.00-21.00 Arası Çalışma</h6>
-                                <p class="text-muted">Evet</p>
+                                <p class="text-muted"><?php echo $employeeData['is_twelve_nine_work'] == 1 ? 'Evet' : 'Hayır'; ?></p>
                             </div>
                         </div>
-                        <h6>Projects</h6>
+                        <h6>Information</h6>
                         <hr class="mt-0 mb-4">
-                        <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                                <h6>Recent</h6>
-                                <p class="text-muted">Lorem ipsum</p>
+                        <div class="row pt-1" style="overflow-wrap: break-word;">
+                            <div style="margin-left: 15px;">
+                                <p class="text-muted" style="">
+                                    <?php echo $employeeData['information'] ?>
+                                </p>
                             </div>
-                            <div class="col-6 mb-3">
-                                <h6>Most Viewed</h6>
-                                <p class="text-muted">Dolor sit amet</p>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-start">
-                        <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                        <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
                         </div>
                     </div>
                     </div>

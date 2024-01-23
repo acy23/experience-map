@@ -380,7 +380,7 @@
                         <td>${employee.first_name}</td>
                         <td>${employee.last_name}</td>
                         <td>${employee.phone_number}</td>
-                        <td><button type="button" class="btn btn-outline-info">Detay</button></td> 
+                        <td><button type="button" class="btn btn-outline-info" onclick="showEmployeeDetails(${employee.id})">Detay</button></td> 
                       </tr>
                     `).join('')}
                   </tbody>
@@ -395,6 +395,12 @@
             $('.modal').modal('show');
         })
         .catch(error => console.error('Error:', error));
+      }
+    </script>
+    <script>
+      function showEmployeeDetails(employeeId) {
+        // Redirect to employee.php with the employee ID as a query parameter
+        window.location.href = `employee.php?id=${employeeId}`;
       }
     </script>
   </body>
