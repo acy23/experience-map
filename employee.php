@@ -6,6 +6,9 @@
     header("Location: login.php");
     exit();
   }
+
+  if(isset())
+
 ?>
 
 <!DOCTYPE html>

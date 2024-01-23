@@ -49,26 +49,28 @@
       </div>
     </header>
     <div class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Çalışan Listesi</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content" style="width: 800px; padding: 10px; background-color: #ededed; display: table-cell;">
+              <div class="modal-header">
+                  <h5 class="modal-title">Çalışan Listesi</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                  <!-- Your table or data goes here -->
+              </div>
+              <!--
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+              -->
           </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <!--
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-          -->
-        </div>
       </div>
     </div>
+
     <!-- SVG Türkiye Haritası | MIT Lisans | dnomak.com -->
     <div class="il-isimleri"></div>
     <div class="svg-turkiye-haritasi">
@@ -339,12 +341,11 @@
     </div>
     <!-- SVG Türkiye Haritası -->
     <script src="js/svg-turkiye-haritasi.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
       svgturkiyeharitasi();
     </script>
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- Bootstrap JS (Popper.js is required for some Bootstrap components) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -360,8 +361,8 @@
         .then(data => {
             // Create table HTML dynamically
             const tableHTML = `
-              <div style="overflow-x: auto; width: 100%;">
-                <table class="table" style="width: 100%;">
+              <div>
+                <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">#Id</th>
