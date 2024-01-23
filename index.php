@@ -21,7 +21,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   </head>
-  <body>
+  <body style="font-size: 15px;">
+    <!--
     <header>
       <div style="padding: 0 20px 20px 20px;">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,7 +32,6 @@
               </button>
               <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
                   <ul class="navbar-nav">
-                      <!-- Keep comments -->
                       <li class="nav-item active">
                           <a class="nav-link" href="index.php">Anasayfa</a>
                       </li>
@@ -48,11 +48,13 @@
           </nav>
       </div>
     </header>
+    -->
+    <?php include('navbar.php') ?>
     <div class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
-          <div class="modal-content" style="width: 800px; padding: 10px; background-color: #ededed; display: table-cell;">
+          <div class="modal-content" style="width: 800px; padding: 10px; background-color: #ededed; display: table-cell; font-size:15px;">
               <div class="modal-header">
-                  <h5 class="modal-title">Çalışan Listesi</h5>
+                  <h5 class="modal-title" style="font-size: 1.8rem;">Çalışan Listesi</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -380,7 +382,7 @@
                         <td>${employee.first_name}</td>
                         <td>${employee.last_name}</td>
                         <td>${employee.phone_number}</td>
-                        <td><button type="button" class="btn btn-outline-info" onclick="showEmployeeDetails(${employee.id})">Detay</button></td> 
+                        <td><button type="button" class="btn btn-outline-info" style="font-size: 15px;" onclick="showEmployeeDetails(${employee.id})">Detay</button></td> 
                       </tr>
                     `).join('')}
                   </tbody>

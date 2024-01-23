@@ -58,6 +58,8 @@
     </style>
   </head>
   <body>
+    <?php include('navbar.php') ?>
+    <!--
     <header>
         <div style="padding: 0 20px 20px 20px;">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -67,7 +69,6 @@
                 </button>
                 <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                        <!-- Keep comments -->
                         <li class="nav-item active">
                             <a class="nav-link" href="index.php">Anasayfa</a>
                         </li>
@@ -84,6 +85,7 @@
             </nav>
         </div>
     </header>
+    -->
     <section class="vh-100" style="background-color: #f4f5f7;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
