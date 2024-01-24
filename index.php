@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body style="font-size: 15px;">
+  <body style="font-size: 15px; height: 100%;">
     <?php include('navbar.php') ?>
     <div class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -315,7 +315,7 @@
         </g>
       </svg>
     </div>
-    <div>
+    <div style="bottom: 0px;">
       <footer>
           <div class="footer-container">
               <div class="logo">
