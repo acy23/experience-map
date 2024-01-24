@@ -351,7 +351,7 @@ body {
 }
 </style>
 
-<nav class="nav" style="padding-top: 10px; padding-bottom: 20px; font-size: 5px; border-size">
+<nav class="nav" style="padding-top: 0px; padding-bottom: 0px; font-size: 3px;">
 	<div class="container">
 		<div class="logo">
 			<a href="index.php">Experience Ajans</a>

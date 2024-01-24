@@ -20,35 +20,9 @@
     <link href="css/svg-turkiye-haritasi.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body style="font-size: 15px;">
-    <!--
-    <header>
-      <div style="padding: 0 20px 20px 20px;">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="index.php">Experience Ajans</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
-                  <ul class="navbar-nav">
-                      <li class="nav-item active">
-                          <a class="nav-link" href="index.php">Anasayfa</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Çalışan ekle</a>
-                      </li>
-                  </ul>
-                  <ul class="navbar-nav">
-                      <li class="nav-item">
-                          <a class="nav-link" href="logout.php">Çıkış yap</a>
-                      </li>
-                  </ul>
-              </div>
-          </nav>
-      </div>
-    </header>
-    -->
     <?php include('navbar.php') ?>
     <div class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -340,6 +314,20 @@
           </g>
         </g>
       </svg>
+    </div>
+    <div>
+      <footer>
+          <div class="footer-container">
+              <div class="logo">
+                <a href="https://ermadagroup.com" target="_blank">
+                  <img src="assets/images/red_logo.jpg" alt="RedLogo">
+                </a>
+              </div>
+              <div class="footer-links">
+                  <p>Copyright @2023 RedSoft.<p>
+              </div>
+          </div>
+      </footer>
     </div>
     <!-- SVG Türkiye Haritası -->
     <script src="js/svg-turkiye-haritasi.js"></script>

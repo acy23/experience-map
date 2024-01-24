@@ -1,0 +1,31 @@
+footer {
+    background-color: #000000; /* Choose a background color for your footer */
+    color: #fff; /* Choose a text color for your links and text in the footer */
+    padding: 20px; /* Adjust the padding as needed */
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    flex-wrap: wrap;
+}
+
+.logo img {
+    max-width: 100%;
+    height: 80px;
+}
+
+.footer-links p {
+    color: #fff; /* Choose a color for your links */
+    text-decoration: none;
+    margin-left: 50px; /* Adjust the margin between the links */
+    font-size: large;
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* Add an underline effect on hover if desired */
+}
