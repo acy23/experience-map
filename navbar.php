@@ -359,7 +359,7 @@ body {
 		<div id="mainListDiv" class="main_list">
 			<ul class="navlinks">
 				<li><a href="index.php">Anasayfa</a></li>
-				<li><a href="index.php">Çalışan Ekle</a></li>
+				<li><a href="addemployee.php">Çalışan Ekle</a></li>
 				<li><a href="logout.php">Çıkış Yap</a></li>
 			</ul>
 		</div>
