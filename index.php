@@ -48,10 +48,31 @@
           </div>
       </div>
     </div>
+    <!--
+    <div class="modal" id="personalCountModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">Personal Count</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <div class="modal-body">
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    -->
 
     <!-- SVG Türkiye Haritası | MIT Lisans | dnomak.com -->
-    <div class="il-isimleri"  ></div>
-    <div class="svg-turkiye-haritasi" onmouseover="getPersonalCount(this)" onclick="getPersonalCount(this)">
+    <div class="il-isimleri"></div>
+    <div class="svg-turkiye-haritasi">
       <svg version="1.1" id="svg-turkiye-haritasi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1007.478 527.323" xml:space="preserve">
         <g id="turkiye">
           <g id="adana" data-plakakodu="01" data-alankodu="322" data-iladi="Adana" data-modal-content="This is the content" onclick="showModalWithData(this)">
@@ -387,41 +408,6 @@
             $('.modal').modal('show');
         })
         .catch(error => console.error('Error:', error));
-      }
-    </script>
-    <script>
-      function getPersonalCount(element) {
-        // Clear any existing timeout
-        clearTimeout(debounceTimeout);
-
-        // Get the data-plakakodu attribute value
-        var plakakodu = element.getAttribute('data-plakakodu');
-
-        // Set a new timeout to make the fetch request after a delay
-        debounceTimeout = setTimeout(function() {
-            // Make a fetch request to get employee data
-            fetch(`getEmployeeByCityId.php?plakakodu=${plakakodu}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Handle the data as needed
-                    var myList = data; // assuming the data is an array
-
-                    // Now you can use the myList variable as needed
-                    console.log(myList);
-
-                    // Render the data on the HTML element
-                    renderDataOnElement(element, myList);
-                })
-                .catch(error => {
-                    // Handle any errors that occurred during the fetch
-                    console.error('Error fetching data:', error.message);
-                });
-        }, 2000); // 2000 milliseconds = 2 seconds
       }
     </script>
     <script>

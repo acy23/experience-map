@@ -5,7 +5,7 @@
         $plakakodu = $_GET['cityId'];
 
         try {
-            $query = "SELECT COUNT(*) from employees where city_id = $cityId";
+            $query = "SELECT count(*) as count , city from employees where city_id = $plakakodu";
 
             $result = $mysqli->query($query);
 
@@ -16,7 +16,7 @@
 
                 // Return the data as JSON
                 header('Content-Type: application/json');
-                echo json_encode($data);
+                echo json_encode($data[0]);
             } else {
                 // Handle query error
                 echo json_encode(['error' => $mysqli->error]);
@@ -31,6 +31,4 @@
     } else {
         echo "Invalid request";
     }
-
-
 ?>

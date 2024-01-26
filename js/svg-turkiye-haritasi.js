@@ -1,5 +1,3 @@
-/*! SVG Türkiye Haritası | MIT Lisans | dnomak.com */
-
 function svgturkiyeharitasi() {
   const element = document.querySelector('#svg-turkiye-haritasi');
   const info = document.querySelector('.il-isimleri');
@@ -8,11 +6,10 @@ function svgturkiyeharitasi() {
     'mouseover',
     function (event) {
       if (event.target.tagName === 'path' && event.target.parentNode.id !== 'guney-kibris') {
-        info.innerHTML = [
-          '<div>',
-          event.target.parentNode.getAttribute('data-iladi'),
-          '</div>'
-        ].join('');
+        const cityId = event.target.parentNode.getAttribute('data-plakakodu');
+        const cityName = event.target.parentNode.getAttribute('data-iladi');
+
+        fetchPersonalCount(cityId, cityName);
       }
     }
   );
@@ -27,31 +24,22 @@ function svgturkiyeharitasi() {
 
   element.addEventListener(
     'mouseout',
-    function (event) {
+    function () {
       info.innerHTML = '';
     }
   );
 
-  element.addEventListener(
-    'click',
-    function (event) {
-      if (event.target.tagName === 'path') {
-        const parent = event.target.parentNode;
-        const id = parent.getAttribute('id');
-
-        if (
-          id === 'guney-kibris'
-        ) {
-          return;
-        }
-
-        window.location.href = (
-          '#'
-          + id
-          + '-'
-          + parent.getAttribute('data-plakakodu')
-        );
-      }
-    }
-  );
+  function fetchPersonalCount(cityId, cityName) {
+    // Fetch personal count from your server
+    fetch('getPersonalCountByCityId.php?cityId=' + cityId)
+      .then(response => response.json())
+      .then(data => {
+        const count = data.count || 0;
+        // Update the content of .il-isimleri with the fetched count
+        info.innerHTML = '<div>' + cityName + '<br> Personel sayısı: ' + count + '</div>';
+      })
+      .catch(error => {
+        console.error('Error fetching personal count', error);
+      });
+  }
 }
