@@ -94,8 +94,14 @@
                 <div class="row g-0" style="width: fit-content;">
                     <div class="col-md-4 gradient-custom text-center text-white"
                     style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                    <img src="assets/images/user.png"
-                        alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                    <?php
+                        $profilePicture = $employeeData['profile_picture'] ?? 'assets/images/user.png';
+                        $width = $employeeData['profile_picture'] ? 150 : 80;
+                        $height = $employeeData['profile_picture'] ? 100 : null;
+                    ?>
+                    <img src="<?php echo $profilePicture; ?>"
+                        alt="Avatar" class="img-fluid my-5"
+                        style="width: <?php echo $width; ?>px; <?php if ($height !== null) echo "height: {$height}px;"; ?>" />
                     <h5><?php echo $employeeData['first_name'] . " " . $employeeData['last_name'] ?></h5>
                     <p><?php echo $employeeData['store'] ?></p>
                     <i class="far fa-edit mb-5"></i>
