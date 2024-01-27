@@ -9,26 +9,27 @@
 <body>
 <?php include('navbar.php') ?>
 <div class="container mt-5">
+    <h3 style="padding-bottom: 20px;">Çalışan ekle</h3>
     <form action="create_employee.php" method="post" enctype="multipart/form-data">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="ad">Ad</label>
-                <input type="text" class="form-control" id="ad" name="ad" placeholder="Ad">
+                <input type="text" class="form-control" id="ad" name="ad" placeholder="Ad" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="soyad">Soyad</label>
-                <input type="text" class="form-control" id="soyad" name="soyad" placeholder="Soyad">
+                <input type="text" class="form-control" id="soyad" name="soyad" placeholder="Soyad" required>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="magaza">Mağaza</label>
-                <input type="text" class="form-control" id="magaza" name="magaza" placeholder="Mağaza">
+                <input type="text" class="form-control" id="magaza" name="magaza" placeholder="Mağaza" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="sehir">Şehir</label>
-                <input type="hidden" id="sehir_city" name="sehir_city">
+                <input type="hidden" id="sehir_city" name="sehir_city" required>
                 <select id="sehir" name="sehir" class="form-control" onchange="updateSehirCity()">
                     <option value="1" data-city="ADANA" name="city_option">ADANA</option>
                     <option value="2" data-city="ADIYAMAN" name="city_option">ADIYAMAN</option>
@@ -118,7 +119,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="girisTarihi">İşe Giriş Tarihi</label>
-                <input type="date" class="form-control" id="girisTarihi" name="girisTarihi">
+                <input type="date" class="form-control" id="girisTarihi" name="girisTarihi" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="calismaTuru">Çalışma Türü</label>
@@ -132,7 +133,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="calismaGunu">Toplam Çalışma Günü</label>
-                <input type="number" class="form-control" id="calismaGunu" name="calismaGunu">
+                <input type="number" class="form-control" id="calismaGunu" name="calismaGunu" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="bitisTarihi">İş Bitiş Tarihi</label>
@@ -143,7 +144,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="telefon">Telefon Numarası</label>
-                <input type="tel" class="form-control" id="telefon" placeholder="Telefon Numarası" name="telefon">
+                <input type="tel" class="form-control" id="telefon" placeholder="Telefon Numarası" name="telefon" required>
             </div>
             <div class="form-group col-md-6">
                 <div class="form-check">
@@ -177,8 +178,7 @@ function updateSehirCity() {
     sehirCityInput.value = selectedOption.getAttribute("data-city");
 }
 </script>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
