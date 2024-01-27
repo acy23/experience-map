@@ -338,25 +338,46 @@
         </g>
       </svg>
     </div>
-    <div class="container mt-4 ml-auto" style="text-align: right;">
-      <table class="table" style="border-collapse: collapse; border-spacing: 0;">
-        <thead>
-          <tr>
-            <th style="border: none;" scope="col">Mağaza</th>
-            <th style="border: none;" scope="col">Çalışan Sayısı</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/teknosa_logo.png" alt="Store 1" style="width: 50px; height: auto;"></td>
-            <td style="border: none; padding-top: 40px;">10</td>
-          </tr>
-          <tr>
-            <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/mediamarkt_logo.jpg" alt="Store 2" style="width: 50px; height: auto;"></td>
-            <td style="border: none; padding-top: 40px;">15</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mt-4" style="text-align: right;">
+          <table class="table" style="border-collapse: collapse; border-spacing: 0;">
+            <thead>
+              <tr>
+                <th scope="col">Rapor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Personel raporu</td>
+                <td><button type="button" class="btn btn-outline-success" style="font-size: 15px;" onclick="downloadReport()">İndir</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6 mt-4" style="text-align: right;">
+          <table class="table" style="border-collapse: collapse; border-spacing: 0;">
+            <thead>
+              <tr>
+                <th style="border: none;" scope="col">Mağaza</th>
+                <th style="border: none;" scope="col">Çalışan Sayısı</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/teknosa_logo.png" alt="Store 1" style="width: 50px; height: auto;"></td>
+                <td style="border: none; padding-top: 40px;">10</td>
+              </tr>
+              <tr>
+                <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/mediamarkt_logo.jpg" alt="Store 2" style="width: 50px; height: auto;"></td>
+                <td style="border: none; padding-top: 40px;">15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <div style="bottom: 0px;">
       <footer>
@@ -402,6 +423,7 @@
                       <th scope="col">Full/Part</th>
                       <th scope="col">Ad</th>
                       <th scope="col">Soyad</th>
+                      <th scope="col">Mağaza</th>
                       <th scope="col">Telefon numarası</th>
                     </tr>
                   </thead>
@@ -412,6 +434,7 @@
                         <td>${employee.work_type}</td>
                         <td>${employee.first_name}</td>
                         <td>${employee.last_name}</td>
+                        <td>${employee.store}</td>
                         <td>${employee.phone_number}</td>
                         <td><button type="button" class="btn btn-outline-info" style="font-size: 15px;" onclick="showEmployeeDetails(${employee.id})">Detay</button></td> 
                       </tr>
@@ -480,7 +503,12 @@
               console.error('Error fetching city IDs:', error);
           }
         });
-    });
-  </script>
+      });
+    </script>
+    <script>
+      function downloadReport(){
+
+      }
+    </script>
   </body>
 </html>
