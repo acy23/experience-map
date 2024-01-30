@@ -351,7 +351,7 @@
             <tbody>
               <tr>
                 <td>Personel raporu</td>
-                <td><button type="button" class="btn btn-outline-success" style="font-size: 15px;" onclick="downloadReport()">İndir</button></td>
+                <td><button type="button" class="btn btn-outline-success" style="font-size: 15px;" onclick="downloadExcel()">İndir</button></td>
               </tr>
             </tbody>
           </table>
@@ -366,13 +366,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr id="teknosaRow">
                 <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/teknosa_logo.png" alt="Store 1" style="width: 50px; height: auto;"></td>
-                <td style="border: none; padding-top: 40px;">10</td>
+                <td id="teknosaCount" style="border: none; padding-top: 40px;">Loading...</td>
               </tr>
-              <tr>
+              <tr id="mediamarktRow">
                 <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/mediamarkt_logo.jpg" alt="Store 2" style="width: 50px; height: auto;"></td>
-                <td style="border: none; padding-top: 40px;">15</td>
+                <td id="mediamarktCount" style="border: none; padding-top: 40px;">Loading...</td>
               </tr>
             </tbody>
           </table>
@@ -478,23 +478,13 @@
           type: 'GET',
           dataType: 'json',
           success: function (data) {
-              // Process the returned data
-
-              // Assuming 'data' is an array of city IDs
-              // Check if the data array is not empty
               if (data.length > 0) {
-                  // Loop through the city IDs and bind hover events
                   data.forEach(function (cityId) {
-                      // Find the corresponding SVG path using the data-plakakodu attribute
                       var $path = $('g[data-plakakodu="' + cityId + '"] path');
                       $path.css('fill', '#31db61');
-                      // Check if original color data is not set
                       if (!$path.data('original-color')) {
-                          // Save the original color if not already set
                           $path.data('original-color', $path.css('fill'));
                       }
-
-                      // Bind hover events
                       $path.hover(handleHover, handleMouseLeave);
                   });
               }
@@ -506,9 +496,123 @@
       });
     </script>
     <script>
-      function downloadReport(){
+      function downloadExcel() {
+        const apiUrl = 'https://rwnmszihji35btuadxhc7a62k40uxqub.lambda-url.eu-west-2.on.aws/';
+        //const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // Add other headers as needed
+          },
+          body: JSON.stringify({
+            "information": [
+                {
+                    "id": 24,
+                    "first_name": "Ozan",
+                    "last_name": "Madan",
+                    "store": "Media Izmir 2 (Optimum)",
+                    "city": "İZMİR",
+                    "city_id": 35,
+                    "hire_date": "2019-08-01",
+                    "work_type": "Full",
+                    "total_worked_day": 1644,
+                    "work_end_date": "2024-01-31",
+                    "phone_number": "0 538 947 1573",
+                    "is_twelve_nine_work": 0,
+                    "information": "",
+                    "profile_picture": "uploads/Ozan Madan.jpeg",
+                    "is_deleted": 0
+                },
+                {
+                    "id": 25,
+                    "first_name": "Oğuzhan",
+                    "last_name": "Kelemen",
+                    "store": "Media Mersin 1 (Forum)",
+                    "city": "MERSİN",
+                    "city_id": 33,
+                    "hire_date": "2020-02-01",
+                    "work_type": "Full",
+                    "total_worked_day": 1460,
+                    "work_end_date": "2024-01-31",
+                    "phone_number": "0 532 120 5384",
+                    "is_twelve_nine_work": 0,
+                    "information": "",
+                    "profile_picture": "uploads/Oğuzhan Kelemen.jpeg",
+                    "is_deleted": 0
+                },
+                {
+                    "id": 26,
+                    "first_name": "Aslı",
+                    "last_name": "Barut",
+                    "store": "Media Istanbul 1 (Umraniye)",
+                    "city": "İSTANBUL",
+                    "city_id": 34,
+                    "hire_date": "2022-02-17",
+                    "work_type": "Full",
+                    "total_worked_day": 713,
+                    "work_end_date": "2024-01-31",
+                    "phone_number": "0 530 975 81 20",
+                    "is_twelve_nine_work": 1,
+                    "information": "",
+                    "profile_picture": "uploads/",
+                    "is_deleted": 0
+                }
+            ]
+          }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Extract base64-encoded content from the API response
+          const base64Content = data.body;
+
+          // Decode the base64 string to binary data
+          const binaryData = atob(base64Content);
+
+          // Convert binary data to array buffer
+          const arrayBuffer = new ArrayBuffer(binaryData.length);
+          const view = new Uint8Array(arrayBuffer);
+          for (let i = 0; i < binaryData.length; i++) {
+            view[i] = binaryData.charCodeAt(i) & 0xff;
+          }
+
+          // Create Blob from array buffer
+          const blob = new Blob([arrayBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+          // Create a link element and set its attributes
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'calisan.xlsx'; // Set desired filename
+
+          // Append the link to the document and trigger a click to start the download
+          document.body.appendChild(a);
+          a.click();
+
+          // Remove the link from the document
+          document.body.removeChild(a);
+        })
+        .catch(error => console.error('Error:', error));
       }
+    </script>
+
+    <script>
+      function updateEmployeeCount(storeId, url) {
+        $.ajax({
+          url: url,
+          dataType: 'json',
+          success: function(data) {
+            $('#' + storeId + 'Count').text(data.count);
+          },
+          error: function(error) {
+            console.error('Error fetching employee count:', error);
+            $('#' + storeId + 'Count').text('Error');
+          }
+        });
+      }
+
+      updateEmployeeCount('teknosa', 'getEmployeesInTeknosa.php');
+      updateEmployeeCount('mediamarkt', 'getEmployeesInMediaMarkt.php');
     </script>
   </body>
 </html>

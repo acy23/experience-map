@@ -2,7 +2,7 @@
     include('database.php');
 
     try {
-        $query = "SELECT COUNT(id) as count from employees where store like '%media%' or '%Media%'";
+        $query = "SELECT COUNT(id) as count from employees where store like '%teknosa%' or '%Teknosa%'";
 
         $result = $mysqli->query($query);
 
