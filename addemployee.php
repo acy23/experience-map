@@ -23,14 +23,25 @@
         </div>
 
         <div class="form-row">
+            <!--
             <div class="form-group col-md-6">
                 <label for="magaza">Mağaza</label>
                 <input type="text" class="form-control" id="magaza" name="magaza" placeholder="Mağaza" required>
+            </div>
+            -->
+            <div class="form-group col-md-6">
+                <label for="magaza">Mağaza</label>
+                <select id="magaza" name="magaza" class="form-control">
+                    <option value="" disabled selected>Seçiniz...</option>
+                    <option value="Media Markt">Media Markt</option>
+                    <option value="Teknosa">Teknosa</option>
+                </select>
             </div>
             <div class="form-group col-md-6">
                 <label for="sehir">Şehir</label>
                 <input type="hidden" id="sehir_city" name="sehir_city" required>
                 <select id="sehir" name="sehir" class="form-control" onchange="updateSehirCity()">
+                    <option value="" disabled selected>Seçiniz...</option>
                     <option value="1" data-city="ADANA" name="city_option">ADANA</option>
                     <option value="2" data-city="ADIYAMAN" name="city_option">ADIYAMAN</option>
                     <option value="3" data-city="AFYONKARAHİSAR" name="city_option">AFYONKARAHİSAR</option>
@@ -124,6 +135,7 @@
             <div class="form-group col-md-6">
                 <label for="calismaTuru">Çalışma Türü</label>
                 <select id="calismaTuru" name="calismaTuru" class="form-control">
+                    <option value="" disabled selected>Seçiniz...</option>
                     <option value="Full">Full</option>
                     <option value="Part">Part</option>
                 </select>
@@ -146,10 +158,14 @@
                 <label for="telefon">Telefon Numarası</label>
                 <input type="tel" class="form-control" id="telefon" placeholder="Telefon Numarası" name="telefon" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6" style="padding-top: 30px; padding-left: 30px;">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="calismaSaatleri" name="calismaSaatleri">
-                    <label class="form-check-label" for="calismaSaatleri">12.00 - 21.00 Çalışma</label>
+                    <input class="form-check-input" type="checkbox" id="calismaSaatleri_2" name="calismaSaatleri_2">
+                    <label class="form-check-label" for="calismaSaatleri_2">11.00 - 20.00 Çalışma</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="calismaSaatleri_1" name="calismaSaatleri_1">
+                    <label class="form-check-label" for="calismaSaatleri_1">12.00 - 21.00 Çalışma</label>
                 </div>
             </div>
         </div>
