@@ -1,398 +1,178 @@
-<style>
-@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700");
-html,
-body {
-	font-family: "Quicksand", sans-serif;
-}
-/*-- Inspiration taken from abdo steif -->
-/* --> https://codepen.io/abdosteif/pen/bRoyMb?editors=1100*/
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience Ajans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Your existing styles here */
 
-/* Navbar section */
+        /* Updated Navbar styles */
+        .nav {
+            background-color: #15132B;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
 
-.nav {
-	width: 100%;
-	height: 65px;
-	position: fixed;
-	line-height: 65px;
-	text-align: center;
-}
+        .nav div.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.nav div.logo {
-	float: left;
-	width: auto;
-	height: auto;
-	padding-left: 3rem;
-}
+        .nav div.logo a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-.nav div.logo a {
-	text-decoration: none;
-	color: #fff;
-	font-size: 1.5rem;
-}
+        .navlinks {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
 
-.nav div.logo a:hover {
-	color: #dad2bc;
-}
+        .navlinks li {
+            margin-right: 20px;
+        }
 
-.nav div.main_list {
-	height: 65px;
-	float: right;
-}
+        .navlinks li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
 
-.nav div.main_list ul {
-	width: 100%;
-	height: 65px;
-	display: flex;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+        .navlinks li a:hover {
+            color: #dad2bc;
+        }
 
-.nav div.main_list ul li {
-	width: auto;
-	height: 65px;
-	padding: 0;
-	padding-right: 3rem;
-}
+        .navTrigger {
+            display: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+		/* Kullanıcı bilgisi için yeni stiller ekleyin */
+			.user-info {
+				display: flex;
+				align-items: center;
+			}
 
-.nav div.main_list ul li a {
-	text-decoration: none;
-	color: #fff;
-	line-height: 65px;
-	font-size: 1.5rem;
-}
+			.user-details {
+				display: flex;
+				align-items: center;
+			}
 
-.nav div.main_list ul li a:hover {
-	color: #dad2bc;
-}
+			.user-avatar img {
+				width: 55px; /* Sabit genişlik */
+				height: 55px; /* Sabit yükseklik */
+				border-radius: 50%; /* Daire şeklinde yapın */
+			}
 
-/* Home section */
+			.user-text {
+				margin-left: 10px;
+			}
 
-.home {
-	width: 100%;
-	height: 100vh;
-	background-image: url(https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0f6908fa5e81286213c7211276e6b3d&auto=format&fit=crop&w=1500&q=80);
-	background-position: center top;
-	background-size: cover;
-}
+			.user-name {
+				color: #fff;
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
 
-.navTrigger {
-	display: none;
-}
+			.user-role {
+				color: #aaa; /* Veya istediğiniz renk */
+				font-size: 0.9rem;
+			}
 
-.nav {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	-webkit-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-}
 
-/* Media qurey section */
+        @media screen and (max-width: 768px) {
+            .navlinks {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #fff;
+            }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-	.container {
-		margin: 0;
-	}
-}
+            .navlinks.show_list {
+                display: flex;
+            }
 
-@media screen and (max-width: 768px) {
-	.navTrigger {
-		display: block;
-	}
-	.nav div.logo {
-		margin-left: 15px;
-	}
-	.nav div.main_list {
-		width: 100%;
-		height: 0;
-		overflow: hidden;
-	}
-	.nav div.show_list {
-		height: auto;
-		display: none;
-	}
-	.nav div.main_list ul {
-		flex-direction: column;
-		width: 100%;
-		height: 100vh;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		background-color: #111;
-		/*same background color of navbar*/
-		background-position: center top;
-	}
-	.nav div.main_list ul li {
-		width: 100%;
-		text-align: right;
-	}
-	.nav div.main_list ul li a {
-		text-align: center;
-		width: 100%;
-		font-size: 3rem;
-		padding: 20px;
-	}
-	.nav div.media_button {
-		display: block;
-	}
-}
+            .navlinks li {
+                margin: 0;
+                text-align: center;
+                padding: 15px;
+                border-bottom: 1px solid #444;
+            }
 
-/* Animation */
-/* Inspiration taken from Dicson https://codemyui.com/simple-hamburger-menu-x-mark-animation/ */
+            .navTrigger {
+                display: block;
+            }
 
-.navTrigger {
-	cursor: pointer;
-	width: 30px;
-	height: 25px;
-	margin: auto;
-	position: absolute;
-	right: 30px;
-	top: 0;
-	bottom: 0;
-}
+			
+        }
+    </style>
+</head>
+<body>
 
-.navTrigger i {
-	background-color: #fff;
-	border-radius: 2px;
-	content: "";
-	display: block;
-	width: 100%;
-	height: 4px;
-}
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.php">Experience Ajans</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                   
+                    <li><a href="addemployee.php"><i class="fas fa-user-plus"></i> Çalışan Ekle</a></li>
+                    <li><a href="rapor-gonder.php"><i class="fas fa-file-alt"></i> Rapor Gönder</a></li>
+                   
+					
+                    <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
+					<button type="button" class="btn btn-outline-success" style="font-size: 15px;" onclick="downloadExcel()">
+                                <i class="fas fa-download"></i> Rapor İndir
+                            </button>
+                </ul>
+            </div>
+			
+			<div class="user-info">
+					<div class="user-details">
+						<span class="user-avatar"><img src="assets/images/avatar.png" alt="Kullanıcı Avatarı"></span>
+						<div class="user-text">
+							<span class="user-name"><?php echo $_SESSION["username"] ?></span>
+							
+						</div>
+					</div>
+				<span class="navTrigger">
+					<i class="fas fa-bars"></i>
+				</span>
+            </div>
+        </div>
+    </nav>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $('.navTrigger').click(function () {
+            $(this).toggleClass('active');
+            $("#mainListDiv").toggleClass("show_list");
+        });
 
-.navTrigger i:nth-child(1) {
-	-webkit-animation: outT 0.8s backwards;
-	animation: outT 0.8s backwards;
-	-webkit-animation-direction: reverse;
-	animation-direction: reverse;
-}
-
-.navTrigger i:nth-child(2) {
-	margin: 5px 0;
-	-webkit-animation: outM 0.8s backwards;
-	animation: outM 0.8s backwards;
-	-webkit-animation-direction: reverse;
-	animation-direction: reverse;
-}
-
-.navTrigger i:nth-child(3) {
-	-webkit-animation: outBtm 0.8s backwards;
-	animation: outBtm 0.8s backwards;
-	-webkit-animation-direction: reverse;
-	animation-direction: reverse;
-}
-
-.navTrigger.active i:nth-child(1) {
-	-webkit-animation: inT 0.8s forwards;
-	animation: inT 0.8s forwards;
-}
-
-.navTrigger.active i:nth-child(2) {
-	-webkit-animation: inM 0.8s forwards;
-	animation: inM 0.8s forwards;
-}
-
-.navTrigger.active i:nth-child(3) {
-	-webkit-animation: inBtm 0.8s forwards;
-	animation: inBtm 0.8s forwards;
-}
-
-@-webkit-keyframes inM {
-	50% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(45deg);
-	}
-}
-
-@keyframes inM {
-	50% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(45deg);
-	}
-}
-
-@-webkit-keyframes outM {
-	50% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(45deg);
-	}
-}
-
-@keyframes outM {
-	50% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(45deg);
-	}
-}
-
-@-webkit-keyframes inT {
-	0% {
-		-webkit-transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		-webkit-transform: translateY(9px) rotate(0deg);
-	}
-	100% {
-		-webkit-transform: translateY(9px) rotate(135deg);
-	}
-}
-
-@keyframes inT {
-	0% {
-		transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		transform: translateY(9px) rotate(0deg);
-	}
-	100% {
-		transform: translateY(9px) rotate(135deg);
-	}
-}
-
-@-webkit-keyframes outT {
-	0% {
-		-webkit-transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		-webkit-transform: translateY(9px) rotate(0deg);
-	}
-	100% {
-		-webkit-transform: translateY(9px) rotate(135deg);
-	}
-}
-
-@keyframes outT {
-	0% {
-		transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		transform: translateY(9px) rotate(0deg);
-	}
-	100% {
-		transform: translateY(9px) rotate(135deg);
-	}
-}
-
-@-webkit-keyframes inBtm {
-	0% {
-		-webkit-transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		-webkit-transform: translateY(-9px) rotate(0deg);
-	}
-	100% {
-		-webkit-transform: translateY(-9px) rotate(135deg);
-	}
-}
-
-@keyframes inBtm {
-	0% {
-		transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		transform: translateY(-9px) rotate(0deg);
-	}
-	100% {
-		transform: translateY(-9px) rotate(135deg);
-	}
-}
-
-@-webkit-keyframes outBtm {
-	0% {
-		-webkit-transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		-webkit-transform: translateY(-9px) rotate(0deg);
-	}
-	100% {
-		-webkit-transform: translateY(-9px) rotate(135deg);
-	}
-}
-
-@keyframes outBtm {
-	0% {
-		transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		transform: translateY(-9px) rotate(0deg);
-	}
-	100% {
-		transform: translateY(-9px) rotate(135deg);
-	}
-}
-
-.affix {
-	padding: 0;
-	background-color: #111;
-}
-
-.myH2 {
-	text-align: center;
-	font-size: 4rem;
-}
-.myP {
-	text-align: justify;
-	padding-left: 15%;
-	padding-right: 15%;
-	font-size: 20px;
-}
-@media all and (max-width: 700px) {
-	.myP {
-		padding: 2%;
-	}
-}
-</style>
-
-<nav class="nav" style="padding-top: 0px; padding-bottom: 0px; font-size: 3px;">
-	<div class="container">
-		<div class="logo">
-			<a href="index.php">Experience Ajans</a>
-		</div>
-		<div id="mainListDiv" class="main_list">
-			<ul class="navlinks">
-				<li><a href="index.php">Anasayfa</a></li>
-				<li><a href="addemployee.php">Çalışan Ekle</a></li>
-				<li><a href="logout.php">Çıkış Yap</a></li>
-			</ul>
-		</div>
-		<span class="navTrigger">
-			<i></i>
-			<i></i>
-			<i></i>
-		</span>
-	</div>
-</nav>
-
-<section class="home" style="height: 75px;">
-</section>
-
-<!-- Jquery needed -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<!-- Function used to shrink nav bar removing paddings and adding black background -->
-<script>
-	$(window).scroll(function() {
-		if ($(document).scrollTop() > 50) {
-			$('.nav').addClass('affix');
-			console.log("OK");
-		} else {
-			$('.nav').removeClass('affix');
-		}
-	});
-</script>
-<script>
-    $('.navTrigger').click(function () {
-        $(this).toggleClass('active');
-        console.log("Clicked menu");
-        $("#mainListDiv").toggleClass("show_list");
-        $("#mainListDiv").fadeIn();
-    });
-</script>
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+    </script>
+</body>
+</html>

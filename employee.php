@@ -59,6 +59,8 @@
   </head>
   <body>
     <?php include('navbar.php') ?>
+    <br><br>
+    <br> <br> 
     <!--
     <header>
         <div style="padding: 0 20px 20px 20px;">
@@ -89,78 +91,78 @@
     <section class="vh-100" style="background-color: #f4f5f7;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-lg-6 mb-4 mb-lg-0">
-                <div class="card mb-3" style="border-radius: .5rem;">
-                <div class="row g-0" style="width: fit-content;">
-                    <div class="col-md-4 gradient-custom text-center text-white"
-                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                    <?php
-                        $profilePicture = $employeeData['profile_picture'] == "uploads/" || $employeeData['profile_picture'] == null 
-                                                ? 'assets/images/user.png' 
-                                                : $employeeData['profile_picture'];
+                <div class="col col-lg-6 mb-4 mb-lg-0">
+                    <div class="card mb-3" style="border-radius: .5rem;">
+                        <div class="row g-0" style="width: fit-content;">
+                            <div class="col-md-4 gradient-custom text-center text-white"
+                            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                            <?php
+                                $profilePicture = $employeeData['profile_picture'] == "uploads/" || $employeeData['profile_picture'] == null 
+                                                        ? 'assets/images/user.png' 
+                                                        : $employeeData['profile_picture'];
 
-                        $width = $employeeData['profile_picture'] ? 150 : 80;
-                        $height = $employeeData['profile_picture'] ? 120 : null;
-                    ?>
-                    <img src="<?php echo $profilePicture; ?>"
-                        alt="Avatar" class="img-fluid my-5"
-                        style="width: <?php echo $width; ?>px; <?php if ($height !== null) echo "height: {$height}px;"; ?>" />
-                    <h5><?php echo $employeeData['first_name'] . " " . $employeeData['last_name'] ?></h5>
-                    <p><?php echo $employeeData['store'] ?></p>
-                    <i class="far fa-edit mb-5"></i>
-                    </div>
-                    <div class="col-md-8">
-                    <div class="card-body p-4">
-                        <h6>Çalışan Bilgisi</h6>
-                        <hr class="mt-0 mb-4">
-                        <div class="row pt-1">
-                            <div class="col-6 mb-3">
-                                <h6>Ad</h6>
-                                <p class="text-muted"><?php echo $employeeData['first_name'] ?></p>
+                                $width = $employeeData['profile_picture'] ? 150 : 80;
+                                $height = $employeeData['profile_picture'] ? 120 : null;
+                            ?>
+                            <img src="<?php echo $profilePicture; ?>"
+                                alt="Avatar" class="img-fluid my-5"
+                                style="width: <?php echo $width; ?>px; <?php if ($height !== null) echo "height: {$height}px;"; ?>" />
+                            <h5><?php echo $employeeData['first_name'] . " " . $employeeData['last_name'] ?></h5>
+                            <p><?php echo $employeeData['store'] ?></p>
+                            <i class="far fa-edit mb-5"></i>
                             </div>
-                            <div class="col-6 mb-3">
-                                <h6>Soyad</h6>
-                                <p class="text-muted"><?php echo $employeeData['last_name'] ?></p>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <h6>Telefon Numarası</h6>
-                                <p class="text-muted"><?php echo $employeeData['phone_number'] ?></p>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <h6>Şehir</h6>
-                                <p class="text-muted"><?php echo $employeeData['city'] ?></p>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <h6>İşe Başlangıç Tarihi</h6>
-                                <p class="text-muted"><?php echo $employeeData['hire_date'] ?></p>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <h6>Full/Part</h6>
-                                <p class="text-muted"><?php echo $employeeData['work_type'] ?></p>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <h6>Toplam Çalışma Günü</h6>
-                                <p class="text-muted"><?php echo $employeeData['total_worked_day'] ?></p>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <h6>12.00-21.00 Arası Çalışma</h6>
-                                <p class="text-muted"><?php echo $employeeData['is_twelve_nine_work'] == 1 ? 'Evet' : 'Hayır'; ?></p>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h6>Çalışan Bilgisi</h6>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-6 mb-3">
+                                            <h6>Ad</h6>
+                                            <p class="text-muted"><?php echo $employeeData['first_name'] ?></p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Soyad</h6>
+                                            <p class="text-muted"><?php echo $employeeData['last_name'] ?></p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Telefon Numarası</h6>
+                                            <p class="text-muted"><?php echo $employeeData['phone_number'] ?></p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Şehir</h6>
+                                            <p class="text-muted"><?php echo $employeeData['city'] ?></p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>İşe Başlangıç Tarihi</h6>
+                                            <p class="text-muted"><?php echo $employeeData['hire_date'] ?></p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Full/Part</h6>
+                                            <p class="text-muted"><?php echo $employeeData['work_type'] ?></p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Toplam Çalışma Günü</h6>
+                                            <p class="text-muted"><?php echo $employeeData['total_worked_day'] ?></p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>12.00-21.00 Arası Çalışma</h6>
+                                            <p class="text-muted"><?php echo $employeeData['is_twelve_nine_work'] == 1 ? 'Evet' : 'Hayır'; ?></p>
+                                        </div>
+                                    </div>
+                                    <h6>Açıklama</h6>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1" style="overflow-wrap: break-word;">
+                                        <div style="margin-left: 15px;">
+                                            <p class="text-muted" style="">
+                                                <?php echo $employeeData['information'] ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <h6>Açıklama</h6>
-                        <hr class="mt-0 mb-4">
-                        <div class="row pt-1" style="overflow-wrap: break-word;">
-                            <div style="margin-left: 15px;">
-                                <p class="text-muted" style="">
-                                    <?php echo $employeeData['information'] ?>
-                                </p>
-                            </div>
-                        </div>
                     </div>
-                    </div>
-                </div>
-                </div>
-            </div>
+                <div>
             </div>
         </div>
     </section>

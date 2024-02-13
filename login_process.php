@@ -17,7 +17,9 @@
         if ($result->num_rows == 1) {
             $user = $result->fetch_assoc();
             $_SESSION["user_email"] = $user["email"];
+            $_SESSION["username"] = "Admin";
             $_SESSION["login_message"] = "Giriş Başarılı!";
+
             header("Location: index.php");
             exit();
         } else {

@@ -10,22 +10,28 @@
 
 ?>
 
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Experience Ajans Çalışan Uygulaması</title>
+    <title>Experience Ajans Çalışan Uygulaması V.2.0.0</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
     <!-- SVG Türkiye Haritası -->
     <link href="css/svg-turkiye-haritasi.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    
   </head>
-  <body style="font-size: 15px; height: 100%;">
+
+
+  <body style="font-size: 15px; height: 100%; background-color:  rgb(2,0,36);">
     <?php include('navbar.php') ?>
+    <br><br>
+    <br> <br>  
     <div class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
           <div class="modal-content" style="width: 800px; padding: 10px; background-color: #ededed; display: table-cell; font-size:15px;">
@@ -39,36 +45,10 @@
                   <p>Modal body text goes here.</p>
                   <!-- Your table or data goes here -->
               </div>
-              <!--
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-              -->
           </div>
       </div>
     </div>
-    <!--
-    <div class="modal" id="personalCountModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <h4 class="modal-title">Personal Count</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-
-          <div class="modal-body">
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    -->
+    
 
     <!-- SVG Türkiye Haritası | MIT Lisans | dnomak.com -->
     <div class="il-isimleri"></div>
@@ -338,61 +318,25 @@
         </g>
       </svg>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mt-4" style="text-align: right;">
-          <table class="table" style="border-collapse: collapse; border-spacing: 0;">
-            <thead>
-              <tr>
-                <th scope="col">Rapor</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Personel raporu</td>
-                <td><button type="button" class="btn btn-outline-success" style="font-size: 15px;" onclick="downloadExcel()">İndir</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
 
-        <div class="col-md-6 mt-4" style="text-align: right;">
-          <table class="table" style="border-collapse: collapse; border-spacing: 0;">
-            <thead>
-              <tr>
-                <th style="border: none;" scope="col">Mağaza</th>
-                <th style="border: none;" scope="col">Çalışan Sayısı</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr id="teknosaRow">
-                <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/teknosa_logo.png" alt="Store 1" style="width: 50px; height: auto;"></td>
-                <td id="teknosaCount" style="border: none; padding-top: 40px;">Loading...</td>
-              </tr>
-              <tr id="mediamarktRow">
-                <td style="border: none;"><img style="height: 100px; width: 150px;" src="assets/images/mediamarkt_logo.jpg" alt="Store 2" style="width: 50px; height: auto;"></td>
-                <td id="mediamarktCount" style="border: none; padding-top: 40px;">Loading...</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div style="bottom: 0px;">
-      <footer>
-          <div class="footer-container">
-              <div class="logo">
-                <a href="https://ermadagroup.com" target="_blank">
-                  <img src="assets/images/red_logo.jpg" alt="RedLogo">
-                </a>
-              </div>
-              <div class="footer-links">
-                  <p>Copyright @2024 RedSoft.<p>
-              </div>
-          </div>
-      </footer>
-    </div>
+
+  
+
+
+
+
+
+    <?php 
+include_once('data/footer.php');
+?>
+
+
+
+
+
+
+
+
     <!-- SVG Türkiye Haritası -->
     <script src="js/svg-turkiye-haritasi.js"></script>
     <script>
@@ -404,53 +348,58 @@
     <!-- Bootstrap JS (Popper.js is required for some Bootstrap components) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    
+
+
+
     <script>
       // Custom JavaScript function to show modal with data
       function showModalWithData(element) {
         const plakakodu = element.getAttribute('data-plakakodu');
 
-    // Make an AJAX request to get employee data
-    fetch(`getEmployeeByCityId.php?plakakodu=${plakakodu}`)
-        .then(response => response.json())
-        .then(data => {
-            // Create table HTML dynamically
-            const tableHTML = `
-              <div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#Id</th>
-                      <th scope="col">Full/Part</th>
-                      <th scope="col">Ad</th>
-                      <th scope="col">Soyad</th>
-                      <th scope="col">Mağaza</th>
-                      <th scope="col">Telefon numarası</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${data.map(employee => `
-                      <tr>
-                        <th scope="row">${employee.id}</th>
-                        <td>${employee.work_type}</td>
-                        <td>${employee.first_name}</td>
-                        <td>${employee.last_name}</td>
-                        <td>${employee.store}</td>
-                        <td>${employee.phone_number}</td>
-                        <td><button type="button" class="btn btn-outline-info" style="font-size: 15px;" onclick="showEmployeeDetails(${employee.id})">Detay</button></td> 
-                      </tr>
-                    `).join('')}
-                  </tbody>
-                </table>
-              </div>`;
+        // Make an AJAX request to get employee data
+        fetch(`getEmployeeByCityId.php?plakakodu=${plakakodu}`)
+            .then(response => response.json())
+            .then(data => {
+                // Create table HTML dynamically
+                const tableHTML = `
+                  <div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#Id</th>
+                          <th scope="col">Full/Part</th>
+                          <th scope="col">Ad</th>
+                          <th scope="col">Soyad</th>
+                          <th scope="col">Mağaza</th>
+                          <th scope="col">Telefon numarası</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${data.map(employee => `
+                          <tr>
+                            <th scope="row">${employee.id}</th>
+                            <td>${employee.work_type}</td>
+                            <td>${employee.first_name}</td>
+                            <td>${employee.last_name}</td>
+                            <td>${employee.store}</td>
+                            <td>${employee.phone_number}</td>
+                            <td><button type="button" class="btn btn-outline-info" style="font-size: 15px;" onclick="showEmployeeDetails(${employee.id})">Detay</button></td> 
+                          </tr>
+                        `).join('')}
+                      </tbody>
+                    </table>
+                  </div>`;
 
-            // Log the data (you can replace this with your modal logic)
-            console.log("Table Content:", tableHTML);
+                // Log the data (you can replace this with your modal logic)
+                console.log("Table Content:", tableHTML);
 
-            // Update modal content and show the Bootstrap modal
-            $('.modal .modal-body').html(tableHTML); // Use '.modal .modal-body' to target the modal body
-            $('.modal').modal('show');
-        })
-        .catch(error => console.error('Error:', error));
+                // Update modal content and show the Bootstrap modal
+                $('.modal .modal-body').html(tableHTML); // Use '.modal .modal-body' to target the modal body
+                $('.modal').modal('show');
+            })
+            .catch(error => console.error('Error:', error));
       }
     </script>
     <script>
@@ -461,7 +410,7 @@
     </script>
     <script>
         function handleHover() {
-          $(this).css('fill', '#02bc61');
+          $(this).css('fill', '#00008B');
         }
 
         // Function to handle mouse leave
@@ -481,7 +430,7 @@
               if (data.length > 0) {
                   data.forEach(function (cityId) {
                       var $path = $('g[data-plakakodu="' + cityId + '"] path');
-                      $path.css('fill', '#31db61');
+                      $path.css('fill', 'rgb(74 185 251)');
                       if (!$path.data('original-color')) {
                           $path.data('original-color', $path.css('fill'));
                       }
@@ -498,13 +447,11 @@
     <script>
       function downloadExcel() {
         const apiUrl = 'https://rwnmszihji35btuadxhc7a62k40uxqub.lambda-url.eu-west-2.on.aws/';
-        //const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
         fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            // Add other headers as needed
           },
           body: JSON.stringify({
             "information": [
@@ -613,6 +560,7 @@
 
       updateEmployeeCount('teknosa', 'getEmployeesInTeknosa.php');
       updateEmployeeCount('mediamarkt', 'getEmployeesInMediaMarkt.php');
+
     </script>
   </body>
 </html>
