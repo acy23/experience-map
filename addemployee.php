@@ -28,8 +28,6 @@
         <div class="d-flex align-items-center mb-4">
         <h2>Çalışan Ekle  <i class="fa-solid fa-circle-xmark fa-lg" style="color: #ed3535; cursor: pointer;" onclick="cikisYap()"></i>  </h2>
         </div>
-       
-
             <form action="create_employee.php" method="post" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-group col-md-4">
@@ -169,10 +167,10 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="calismaGunu">Toplam Çalışma Günü</label>
-                        <input type="text" class="form-control" id="calismaGunu" placeholder="oto saydır günü" name="calismaGunu" required>
+                        <input type="text" class="form-control" id="calismaGunu" placeholder="" name="calismaGunu" readonly required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="bitisTarihi">Günce Durumu (aktif-çıkış yapıldı ekle seçmeli)</label>
+                        <label for="bitisTarihi">İşten Ayrılma Tarihi (Hala çalışıyorsa boş bırakınız)</label>
                         <input type="date" class="form-control" id="bitisTarihi" name="bitisTarihi">
                     </div>
                 </div>
@@ -237,6 +235,25 @@ function updateSehirCity() {
     sehirCityInput.value = selectedOption.getAttribute("data-city");
 }
 </script>
+
+<script>
+    function calculateWorkingDays() {
+        var startDate = new Date(document.getElementById("girisTarihi").value);
+        var endDateInput = document.getElementById("bitisTarihi");
+        var endDate = endDateInput.value ? new Date(endDateInput.value) : new Date();
+
+        var timeDifference = endDate - startDate;
+
+        var daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        document.getElementById("calismaGunu").value = daysDifference;
+    }
+
+    document.getElementById("girisTarihi").addEventListener("change", calculateWorkingDays);
+
+    document.getElementById("bitisTarihi").addEventListener("change", calculateWorkingDays);
+</script>
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

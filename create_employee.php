@@ -8,10 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $soyad = $_POST["soyad"];
     $email = $_POST["email"];
     $magaza = $_POST["magaza"];
-    $girisTarihi = $_POST["girisTarihi"];
     $calismaTuru = $_POST["calismaTuru"];
-    $calismaGunu = $_POST["calismaGunu"];
+   
     $bitisTarihi = $_POST["bitisTarihi"];
+    $girisTarihi = $_POST["girisTarihi"];
+    $calismaGunu = $_POST["calismaGunu"];
+
     $telefon = $_POST["telefon"];
     $calismaSaatleri = isset($_POST["calismaSaatleri_1"]) ? 1 : 0;
     $calismaSaatleri2 = isset($_POST["calismaSaatleri_2"]) ? 1 : 0;
