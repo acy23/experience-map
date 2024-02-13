@@ -134,13 +134,11 @@
                 <ul class="navlinks">
                    
                     <li><a href="addemployee.php"><i class="fas fa-user-plus"></i> Çalışan Ekle</a></li>
-                    <li><a href="rapor-gonder.php"><i class="fas fa-file-alt"></i> Rapor Gönder</a></li>
-                   
-					
-                    <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
+                    <!-- <li><a href="rapor-gonder.php"><i class="fas fa-file-alt"></i> Rapor Gönder</a></li> -->
 					<button type="button" class="btn btn-outline-success" style="font-size: 15px;" onclick="downloadExcel()">
-                                <i class="fas fa-download"></i> Rapor İndir
-                            </button>
+                        <i class="fas fa-download"></i> Rapor İndir
+                    </button>
+                    
                 </ul>
             </div>
 			
@@ -149,7 +147,7 @@
 						<span class="user-avatar"><img src="assets/images/avatar.png" alt="Kullanıcı Avatarı"></span>
 						<div class="user-text">
 							<span class="user-name"><?php echo $_SESSION["username"] ?></span>
-							
+							<li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
 						</div>
 					</div>
 				<span class="navTrigger">
