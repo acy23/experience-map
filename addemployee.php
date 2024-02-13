@@ -32,13 +32,17 @@
 
             <form action="create_employee.php" method="post" enctype="multipart/form-data">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="ad">Ad</label>
                         <input type="text" class="form-control" id="ad" name="ad" placeholder="Ad" required>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="soyad">Soyad</label>
                         <input type="text" class="form-control" id="soyad" name="soyad" placeholder="Soyad" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                     </div>
                 </div>
 
